@@ -11,6 +11,25 @@ use Illuminate\Http\RedirectResponse;
 
 class TipsController extends Controller
 {
+    /**
+     * @OA\Get(
+     *   path="/tips/all",
+     *   operationId="/tips/all",
+     *   tags={"tips"},
+     *   summary="Retrieve all tips",
+     *   description="Returns a list of all tips, regardless of their language or origin.",
+     *   @OA\Response(
+     *     response="200",
+     *     description="A collection of tips",
+     *   
+     *   ),
+     *   @OA\Response(
+     *     response="404",
+     *     description="Not Found"
+     *   )
+     * )
+    */
+
     public function index(): JsonResponse
     {
         $chinese = ChineseTip::where('proverb', '!=', null)->get();
@@ -22,6 +41,35 @@ class TipsController extends Controller
             'proverbs' => $proverb
         ]);
     }
+
+    /**
+     * @OA\Get(
+     *   path="/tips/{id}",
+     *   operationId="/tips/{id}",
+     *   tags={"tips"},
+     *   summary="Retrieve a specific tip",
+     *   description="Returns a specific tip, regardless of its language or origin.",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="The id of the tip",
+     *     required=true,
+     *     @OA\Schema(
+     *       type="integer",
+     *       format="int64"
+     *     )
+     *   ),
+     *   @OA\Response(
+     *     response="200",
+     *     description="The requested tip",
+     *   ),
+     *   @OA\Response( 
+     *     response="404",
+     *     description="Not Found"
+     *   )
+     * )
+     )
+    */
 
     public function show($id): JsonResponse
     {

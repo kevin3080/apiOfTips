@@ -1,0 +1,99 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "APi for tips ",
+        "description": "this is an api of Chinese, Greek and Japanese proverbs.",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/v1/"
+        }
+    ],
+    "paths": {
+        "/tips/chinese-tips": {
+            "get": {
+                "tags": [
+                    "tips"
+                ],
+                "summary": "Retrieve tips in Chinese",
+                "description": "Returns a list of all tips, regardless of their language or origin.",
+                "operationId": "/tips/chinese-tips",
+                "responses": {
+                    "200": {
+                        "description": "A collection of tips"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tips/greek-tips": {
+            "get": {
+                "tags": [
+                    "tips"
+                ],
+                "summary": "Retrieve tips in Greek",
+                "description": "Returns a list of all tips, regardless of their language or origin.",
+                "operationId": "/tips/greek-tips",
+                "responses": {
+                    "200": {
+                        "description": "A collection of tips"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tips/all": {
+            "get": {
+                "tags": [
+                    "tips"
+                ],
+                "summary": "Retrieve all tips",
+                "description": "Returns a list of all tips, regardless of their language or origin.",
+                "operationId": "/tips/all",
+                "responses": {
+                    "200": {
+                        "description": "A collection of tips"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/tips/{id}": {
+            "get": {
+                "tags": [
+                    "tips"
+                ],
+                "summary": "Retrieve a specific tip",
+                "description": "Returns a specific tip, regardless of its language or origin.",
+                "operationId": "/tips/{id}",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of the tip",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The requested tip"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        }
+    }
+}
